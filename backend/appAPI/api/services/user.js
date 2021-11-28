@@ -7,8 +7,8 @@ export const search = (params={})=>{
 }
 
 export const create = (user) => {
-    const newContact = new User(user);
-    return newContact.save();
+    const newUser = new User(user);
+    return newUser.save();
 }
 
 export const get = (id) => {
