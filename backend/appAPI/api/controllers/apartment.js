@@ -1,5 +1,6 @@
 import * as aptServices from '../services/apartment.js';
 
+
 const errorhandler = (message, response) => {
     response.status(500);
     response.json({ error: message });
@@ -23,7 +24,9 @@ export const index = async (request, response) => {
 // for save new apartment
 export const save = async (request, response) => {
     try {
-        const apt = { ...request.body };
+        // upload.single('aptImage');
+        console.log(request.file);
+        const apt = { ...request.body,aptImage:request.file.path.replace("\\","/")};
         const newApt = await aptServices.create(apt);
         setSuccessResponse(newApt, response);
     } catch (e) {
@@ -61,3 +64,5 @@ export const remove = async (request, response) => {
         errorhandler(e.message, response)
     }
 };
+
+// apt image uploads

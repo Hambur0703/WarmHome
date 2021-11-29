@@ -24,6 +24,7 @@ export const index = async (request, response) => {
 export const save = async (request, response) => {
     try {
         const user = { ...request.body };
+        console.log(request.body);
         const newUser = await userServices.create(user);
         setSuccessResponse(newUser, response);
     } catch (e) {

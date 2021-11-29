@@ -17,6 +17,9 @@ const aparSchema = new Mongoose.Schema({
         type: String,
         required:"Address is a required filed."
     },
+    "aptImage":{
+        type: String,
+    },
     "createDate":{
         type: Date,
         default:Date.now
