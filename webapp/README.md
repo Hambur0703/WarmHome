@@ -1,5 +1,5 @@
 # final-project-team-3
-## Backend part
+## UI part
 
 ### UI Layout
                                   App
