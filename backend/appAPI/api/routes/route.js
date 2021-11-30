@@ -6,7 +6,7 @@ import multer from 'multer';
 
 const storage = multer.diskStorage({
     destination: function(req,file,cb){
-        cb(null, './uploads');
+        cb(null, './uploads/');
     },
     filename: function(req,file,cb) {
         cb(null, file.originalname);
@@ -25,6 +25,9 @@ router.route('/user/:id')
     .get(userController.get)
     .put(userController.update)
     .delete(userController.remove);
+//math username and password
+router.route('/user/login')
+    .post(userController.match);
 // for apartment route
 router.route('/apt')
     .get(aptController.index)

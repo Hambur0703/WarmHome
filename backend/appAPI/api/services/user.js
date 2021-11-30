@@ -24,3 +24,9 @@ export const remove =(id)=>{
     const promise = User.findByIdAndRemove(id).exec();
     return promise;
 }
+// user name and password match
+
+export const match =(username)=>{
+    const promise = User.findOne({userName:username});
+    return promise;
+}

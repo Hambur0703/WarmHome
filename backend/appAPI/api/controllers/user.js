@@ -9,6 +9,12 @@ const setSuccessResponse = (data, response) => {
     response.status(200);
     response.json(data);
 }
+// fail to login
+const setFailResponse = (data, response) => {
+    response.status(401);
+    response.json(data);
+}
+
 // get all users
 export const index = async (request, response) => {
     try {
@@ -24,7 +30,6 @@ export const index = async (request, response) => {
 export const save = async (request, response) => {
     try {
         const user = { ...request.body };
-        console.log(request.body);
         const newUser = await userServices.create(user);
         setSuccessResponse(newUser, response);
     } catch (e) {
@@ -58,6 +63,31 @@ export const remove = async (request, response) => {
         const id = request.params.id;
         const user = await userServices.remove(id);
         setSuccessResponse({ message: `User ${id} remove successfully` }, response);
+    } catch (e) {
+        errorhandler(e.message, response)
+    }
+};
+
+//user match
+
+export const match = async (request, response) => {
+    try {
+        const username = request.body.userName;
+        const passwordInput = request.body.userPassword;
+        const user = await userServices.match(username);
+
+        if (!user) {
+            setFailResponse({ message: `User does not exist` }, response);
+        } else {
+            // console.log(user.userPassword);
+            // console.log(passwordInput);
+
+            if (passwordInput === user.userPassword) {
+                setSuccessResponse({ message: `User Login successfully` }, response);
+            } else {
+                setFailResponse({ message: `Please try again` }, response);
+            }
+        }
     } catch (e) {
         errorhandler(e.message, response)
     }
