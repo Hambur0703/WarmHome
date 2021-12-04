@@ -1,5 +1,10 @@
 import Apt from "../models/apartment.js";
 
+/**
+ * apartment services, include service to help controller. 
+ */
+
+
 //services to call
 export const search = (params={})=>{
     const promise = Apt.find(params).exec();

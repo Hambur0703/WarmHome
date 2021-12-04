@@ -3,7 +3,13 @@ import * as userController from '../controllers/user.js';
 import * as aptController from '../controllers/apartment.js';
 import multer from 'multer';
 
+/**
+ * use multer to help with upload functions
+ * 
+ * route to route different request with different URL 
+ */
 
+// mutle config
 const storage = multer.diskStorage({
     destination: function(req,file,cb){
         cb(null, './uploads/');
@@ -13,6 +19,8 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({storage: storage})
+
+
 
 const router = express.Router();
 // routes of address
@@ -32,7 +40,7 @@ router.route('/user/login')
 router.route('/apt')
     .get(aptController.index)
     .post(upload.single('aptImage'),aptController.save);
-    // .post(aptController.upload.single('aptImage'),aptController.save);
+    // for test use: .post(aptController.upload.single('aptImage'),aptController.save);
 router.route('/apt/:id')
     .get(aptController.get)
     .put(aptController.update)

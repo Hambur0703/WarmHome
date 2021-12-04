@@ -1,6 +1,10 @@
 import * as aptServices from '../services/apartment.js';
 
+/**
+ * apartment controllers, include method to change data and show data. 
+ */
 
+// success and error handler
 const errorhandler = (message, response) => {
     response.status(500);
     response.json({ error: message });
@@ -26,7 +30,7 @@ export const save = async (request, response) => {
     try {
         // upload.single('aptImage');
         console.log(request.file);
-        const apt = { ...request.body,aptImage:request.file.path.replace("\\","/")};
+        const apt = { ...request.body,aptImage:'http://localhost:3002/'+request.file.path.replace("\\","/")};
         const newApt = await aptServices.create(apt);
         setSuccessResponse(newApt, response);
     } catch (e) {
@@ -65,4 +69,3 @@ export const remove = async (request, response) => {
     }
 };
 
-// apt image uploads

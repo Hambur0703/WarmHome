@@ -1,5 +1,9 @@
 import User from "../models/user.js";
 
+/**
+ * user services, include service to help controller. 
+ */
+
 //services to call
 export const search = (params={})=>{
     const promise = User.find(params).exec();
@@ -24,7 +28,7 @@ export const remove =(id)=>{
     const promise = User.findByIdAndRemove(id).exec();
     return promise;
 }
-// user name and password match
+// user name and password match, get one user by username
 
 export const match =(username)=>{
     const promise = User.findOne({userName:username});

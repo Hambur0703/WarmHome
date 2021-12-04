@@ -1,5 +1,11 @@
 import * as userServices from '../services/user.js'
 
+/**
+ * user controllers, include method to change data and show data. 
+ */
+
+// success and error handler
+
 const errorhandler = (message, response) => {
     response.status(500);
     response.json({ error: message });
