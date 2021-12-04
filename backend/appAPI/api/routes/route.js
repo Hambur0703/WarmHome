@@ -40,10 +40,17 @@ router.route('/user/login')
 router.route('/apt')
     .get(aptController.index)
     .post(upload.single('aptImage'),aptController.save);
-    // for test use: .post(aptController.upload.single('aptImage'),aptController.save);
+
+// for display all liked apartments
+router.route('/apt/liked')
+    .get(aptController.getLiked);
+
+
 router.route('/apt/:id')
     .get(aptController.get)
-    .put(aptController.update)
+    .put(upload.single('aptImage'),aptController.update)
     .delete(aptController.remove);
+
+
 
 export default router;

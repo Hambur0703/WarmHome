@@ -68,4 +68,13 @@ export const remove = async (request, response) => {
         errorhandler(e.message, response)
     }
 };
+// get liked apartment
+export const getLiked = async (request, response) => {
+    try {
+        const apts = await aptServices.searchLiked();
+        setSuccessResponse(apts, response);
+    } catch (e) {
+        errorhandler(e.message, response);
+    }
 
+};

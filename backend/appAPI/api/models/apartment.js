@@ -20,6 +20,10 @@ const aparSchema = new Mongoose.Schema({
     "aptImage":{
         type: String,
     },
+    "aptLike":{
+        type: String,
+        default:"nolike"
+    },
     "createDate":{
         type: Date,
         default:Date.now

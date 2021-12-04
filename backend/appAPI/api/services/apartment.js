@@ -29,3 +29,8 @@ export const remove =(id)=>{
     const promise = Apt.findByIdAndRemove(id).exec();
     return promise;
 }
+// find liked apt
+export const searchLiked = (params={aptLike:'like'})=>{
+    const promise = Apt.find(params).exec();
+    return promise;
+}
