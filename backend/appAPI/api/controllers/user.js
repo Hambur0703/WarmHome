@@ -16,8 +16,8 @@ const setSuccessResponse = (data, response) => {
     response.json(data);
 }
 // fail to login
-const setFailResponse = (data, response) => {
-    response.status(401);
+const setFailResponse = (data, response,status) => {
+    response.status(status);
     response.json(data);
 }
 
@@ -32,12 +32,20 @@ export const index = async (request, response) => {
 
 };
 
-// for save new user
+// for save new user, rules incase same user name regist
 export const save = async (request, response) => {
     try {
-        const user = { ...request.body };
-        const newUser = await userServices.create(user);
-        setSuccessResponse(newUser, response);
+        const name = request.body.userName;
+        const exist = await userServices.match(name);
+        // if user not exist
+        if(!exist){
+            const user = { ...request.body };
+            const newUser = await userServices.create(user);
+            setSuccessResponse(newUser, response);
+        }else{
+            setFailResponse({ message: `User Name Exist, Please try again` }, response,409);
+        }
+
     } catch (e) {
         errorhandler(e.message, response)
     }
@@ -81,17 +89,21 @@ export const match = async (request, response) => {
         const username = request.body.userName;
         const passwordInput = request.body.userPassword;
         const user = await userServices.match(username);
-
+        // make sure user exist
         if (!user) {
             setFailResponse({ message: `User does not exist` }, response);
         } else {
-            // console.log(user.userPassword);
-            // console.log(passwordInput);
-
+        // if user input right username and password, then approved status
             if (passwordInput === user.userPassword) {
-                setSuccessResponse({ message: `User Login successfully` }, response);
+                // to divide user and admin
+                if(username === "admin"){
+                    setSuccessResponse({ message: `Admin Login successfully` }, response);
+                }else{
+                    setSuccessResponse({ message: `User Login successfully` }, response);
+                }
+                
             } else {
-                setFailResponse({ message: `Please try again` }, response);
+                setFailResponse({ message: `Please try again` }, response,401);
             }
         }
     } catch (e) {
