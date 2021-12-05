@@ -1,10 +1,20 @@
 import React from 'react';
+import {Redirect} from "react-router-dom";
+import {message} from "antd";
+
+const isAdmin =()=>localStorage.getItem('username')==='admin';
 
 class Admin extends React.Component {
-    render() {
-        return (
-            <h1>admin</h1>
 
+    componentDidMount() {
+        if(!isAdmin()){
+            message.info('Please login as admin!')
+        }
+    }
+
+    render() {
+        return  !isAdmin()?<Redirect to='/'/>: (
+            <h1>admin</h1>
         )
     }
 }

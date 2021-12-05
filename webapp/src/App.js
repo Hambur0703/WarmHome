@@ -1,17 +1,37 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 import React from 'react';
 import './App.scss';
 import Main from './components/Main/Main'
-import Login from './components/Login/Login'
+import Login, {hideLogin, hideLogout, showLogout} from './components/Login/Login'
 import AllMyList from './components/AllMyList/AllMyList'
 import Admin from './components/Admin/Admin'
 import Register from './components/Register/Register'
 import { Route, Switch, Link } from "react-router-dom";
-const { Header, Content, Footer } = Layout;
-class App extends React.Component {
-  render() {
-    return (
 
+
+const { Header, Content } = Layout;
+
+
+export const isLogin =()=>localStorage.getItem('username')
+
+class App extends React.Component {
+    logout=()=>{
+      localStorage.removeItem('username')
+      window.location.replace('/login')
+    }
+
+    componentDidMount() {
+        if(isLogin()){
+         showLogout()
+         hideLogin()
+        }else{
+         hideLogout()
+        }
+    }
+
+
+    render() {
+    return (
       <Layout>
         <Header className="header-color">
           <div className="header-left">
@@ -20,17 +40,17 @@ class App extends React.Component {
             <Link to="/admin">Admin</Link>
           </div>
 
-          <div>
+         <div onClick={this.logout} id='logout' >logout</div>
+          <div id='login'>
             <Link to="/login">Login</Link>
             <Link to="/register">register</Link>
-          </div>
+         </div>
+
 
         </Header>
         <Layout className="content-layout">
-
           <Content className="site-layout-background">
             <div>
-
               <Switch>
                 <Route path="/" exact component={Main} />
                 <Route path="/login" exact component={Login}></Route>

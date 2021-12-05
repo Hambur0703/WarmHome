@@ -1,13 +1,22 @@
 import React from 'react';
-import { Route, Switch, Link } from "react-router-dom";
-import { Layout } from 'antd'
-import './Main.scss'
-const { Header, Content, Footer } = Layout;
-class Main extends React.Component {
-    render() {
-        return (
-          <div>main</div>
+import { Redirect } from "react-router-dom";
+import { message } from 'antd';
+import './Main.scss';
+import { isLogin } from "../../App";
 
+
+class Main extends React.Component {
+
+    componentDidMount() {
+        if(!isLogin()){
+            message.info('Please Login!')
+        }
+    }
+
+    render() {
+        return !isLogin()?
+            <Redirect to={'/login'} />  :(
+          <div>main</div>
         )
     }
 }

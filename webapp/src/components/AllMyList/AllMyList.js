@@ -1,11 +1,21 @@
 import React from 'react';
+import { Redirect } from "react-router-dom";
+import { message } from 'antd';
+import { isLogin } from "../../App";
 
 class AllMyList extends React.Component {
-    render() {
-        return (
-            <h1>all my list</h1>
 
-        )
+    componentDidMount() {
+        if(!isLogin()){
+            message.info('Please Login!')
+        }
+    }
+
+    render() {
+        return !isLogin()?
+            <Redirect to={'/login'} />  :(
+                <div>All my list</div>
+            )
     }
 }
 
