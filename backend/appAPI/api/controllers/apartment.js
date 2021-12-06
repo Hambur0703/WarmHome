@@ -51,7 +51,7 @@ export const get = async (request, response) => {
 export const update = async (request, response) => {
     try {
         const id = request.params.id;
-        const apt = { ...request.body, id };
+        const apt = { ...request.body, id,aptImage:'http://localhost:3002/'+request.file.path.replace("\\","/") };
         const newApt = await aptServices.update(apt);
         setSuccessResponse(newApt, response);
     } catch (e) {
