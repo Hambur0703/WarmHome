@@ -23,6 +23,8 @@ class App extends React.Component {
       window.location.replace('/login')
     }
 
+    // When the user is not logged in, the nav bar displays the register and login links.
+    // When the user logs in, the register and login become logout.
     componentDidMount() {
         if(isLogin()){
          showLogout()
