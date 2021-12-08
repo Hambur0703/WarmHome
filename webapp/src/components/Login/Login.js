@@ -13,6 +13,7 @@ class Login extends React.Component {
 
     render() {
         return (
+            // Login form
             <Form
                 name="normal_login"
                 onFinish={this.onFinish}

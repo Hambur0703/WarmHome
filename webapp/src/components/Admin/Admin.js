@@ -13,6 +13,7 @@ class Admin extends React.Component {
     }
 
     render() {
+        // only admin can visit the Admin page
         return  !isAdmin()?<Redirect to='/'/>: (
             <h1>admin</h1>
         )

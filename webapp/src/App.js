@@ -21,6 +21,11 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        /*
+        When the user is not logged in, the nav bar displays the register and login links.
+        When the user logs in, the register and login become logout
+        */
+
         if(isLogin()){
          showLogout()
          hideLogin()
@@ -32,6 +37,7 @@ class App extends React.Component {
 
     render() {
     return (
+        // UI Layout
       <Layout>
         <Header className="header-color">
           <div className="header-left">

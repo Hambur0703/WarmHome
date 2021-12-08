@@ -8,6 +8,7 @@ class Register extends React.Component {
     render() {
 
         return (
+            // Register form
             <Form
                 name="normal_login"
                 onFinish={this.onFinish}
@@ -78,8 +79,6 @@ class Register extends React.Component {
     }
 
     onFinish = async(values) => {
-        // step 1: collect username/password from the form
-        // step 2: send data to the server
        console.log('Received values of form: ', values);
        const res = await  axios.post('http://localhost:3002/user',
            {userName:values.userName,userPassword:values.password})
