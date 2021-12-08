@@ -1,0 +1,11 @@
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .header-left{
+        margin-right:50px;
+    }
+    a{
+        margin:0 20px;
+    }
+}

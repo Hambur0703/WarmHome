@@ -1,0 +1,32 @@
+.header-color {
+  background-color: white;
+}
+
+.content-layout {
+  padding: 24px;
+}
+
+.site-layout-background {
+  background: #fff;
+  padding: 24px;
+  margin: 0px;
+  height: 800px;
+  overflow: auto;
+}
+header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+.header-left{
+  margin-right:50px;
+}
+a{
+  margin:0 20px;
+}
+
+#logout{
+  color: #1890ff;
+  cursor: pointer;
+}
