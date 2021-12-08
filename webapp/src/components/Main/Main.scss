@@ -9,3 +9,50 @@ header{
         margin:0 20px;
     }
 }
+
+// style for card list
+ul{
+    display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));    
+    width: 100%;    
+    grid-template-rows: 320px 1fr;
+    // grid-template-rows: minmax(300px, auto);
+    padding: 50px 10px 0 10px;
+    grid-gap: 10px;
+}
+
+
+input{
+    outline-style: none ;
+    border: 1px solid #ccc; 
+    border-radius: 3px;
+    padding: 5px 5px;
+    font-size: 10px;
+    font-family: Arial,Helvetica,sans-serif;
+    margin-right: 10px;
+}
+
+// for search bar style
+.bar{
+    font-size: 14px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+.search{
+    display:flex;
+    justify-content:center;
+}
+.slogan{
+    text-align: center;
+    padding-bottom: 10px;
+    span{
+        color: transparent;
+        -webkit-text-stroke: 3px 	lightsalmon;
+        letter-spacing: 0.04em;
+        font-size: 40px;
+        font-weight: bold;
+
+    }
+}
