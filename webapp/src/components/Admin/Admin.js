@@ -12,7 +12,6 @@ import { Link, useParams } from 'react-router-dom'
 // import Loader from '../Admin/Loader'
 // import { Tablelist} from '../Admin/TableList'
 
-
 class Admin extends React.Component {
 
     constructor(props) {
@@ -49,7 +48,7 @@ class Admin extends React.Component {
     }
     componentDidMount() {
         if (!isLogin()) {
-            message.info('Please Login!')
+            message.info('Please Login as admin!')
         }
 
         this.getAptList()
@@ -96,15 +95,6 @@ class Admin extends React.Component {
     render() {
         return (
             <div>
-                {/* <Link to='/allMyList' className='btn btn-light my-3'>
-                    Go Back
-                </Link> */}
-                {/* 
-
-                <input type="text" id="name" name="name" required
-                    minlength="4" maxlength="8" size="10"> */}
-
-
 
                 <FormContainer>
                     <h1>Edit Apartment</h1>

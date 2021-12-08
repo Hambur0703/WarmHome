@@ -5,6 +5,11 @@ import { message } from 'antd';
 import { Table, Button, Row, Col } from 'react-bootstrap'
 import { isLogin } from '../../../App'
 import Admin from '../Admin.js'
+import {Redirect} from "react-router-dom";
+
+const isAdmin =()=>localStorage.getItem('username')==='admin';
+
+
 
 class TableList extends React.Component {
     state = {
@@ -16,14 +21,14 @@ class TableList extends React.Component {
 
     componentDidMount() {
         if (!isLogin()) {
-            message.info('Please Login!')
+            message.info('Please Login as admin!')
         }
-
 
         this.getAptList()
         this.interval = setInterval(() => this.getAptList(), 1000)
         console.log('get success')
     }
+
     componentWillUnmount() {
         clearInterval(this.interval);
     }
@@ -54,7 +59,7 @@ class TableList extends React.Component {
         const { aptList } = this.state
 
 
-        return (
+        return !isAdmin()?<Redirect to='/'/>:(
             <>
                 {<Admin />}
                 <Row className='align-items-center my-5' >
