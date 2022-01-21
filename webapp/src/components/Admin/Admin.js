@@ -12,6 +12,7 @@ import { Link, useParams } from 'react-router-dom'
 // import Loader from '../Admin/Loader'
 // import { Tablelist} from '../Admin/TableList'
 
+
 class Admin extends React.Component {
 
     constructor(props) {

@@ -20,7 +20,7 @@ class TableList extends React.Component {
 
 
     componentDidMount() {
-        if (!isLogin()) {
+        if (!isAdmin()) {
             message.info('Please Login as admin!')
         }
 

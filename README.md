@@ -1,17 +1,8 @@
-# final-project-team-3
-## Backend part
-### Project backend Requirement
-   - Use Nodejs/express REST API to develop the backend of our webapp.
-   - The app should privide add, update, delete and get all items functions.
-### Instructions
-   - Backend include README.md .gitignore, server.js files other configuration files.
-   - Start wtih "node server.js" in terminal.
-### About Author
-   - Name: Qi Liu
-   - NUID: 001872310
-   - Email: liu.qi1@northeastern.edu
-
-## UI part
+## WarmHome: A rental information publication and quary webapp
+   - Designed and built a full-stack web application landlords and renters using React and Ant Design.
+   - Support register/login/logout, search and filter the apartments(name/price), mark favorite apartments, and check favorite apartments in ”All My List” page for renters.
+   - Support register/login/logout, publish new apartment information, manage(show, delete) published apartment information for landlords.
+   - Implemented RESTful APIs using Node.js, and stored pictures/form-data in MongoDB.
 ### UI Layout
                                   App
                                    |
@@ -20,18 +11,4 @@
      Register       Login        Admin(only login as admin)      AllMyList 
    - Users must register and login before entering Main page and AllMyList page.
    - Only login as the admin can enter Admin page. 
-### About Author
-- Name: Lan Gao
-- NUID: 001568670
-- Email: gao.lan@northeastern.edu
-- Contribution: Main, AllMyList
 
-- Name: Xinyi Chen
-- NUID: 001582439
-- Email: chen.xiny@northeastern.edu
-- Contribution: Admin
-
-- Name: Hanbo Huang
-- NUID: 001539865
-- Email: huang.hanb@northeastern.edu
-- Contribution: Web Frame construction, Login, Register
